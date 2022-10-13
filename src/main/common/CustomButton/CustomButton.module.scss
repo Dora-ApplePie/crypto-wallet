@@ -1,0 +1,59 @@
+@import "src/index.scss";
+
+button {
+  background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+  padding: 10px;
+  color: $default;
+  border: 1px solid $default;
+  font-size: 17px;
+  font-weight: bold;
+  &:hover {
+    background: $default;
+    color: $default-dark;
+    transition: .5s;
+  }
+}
+
+.primary {
+  color: $primary;
+  border: 1px solid $primary;
+  &:hover {
+    background: $primary;
+    color: $default-dark;
+    transition: .5s;
+  }
+}
+
+.danger {
+  color: $danger;
+  border: 1px solid $danger;
+  &:hover {
+    background: $danger;
+    color: $default-dark;
+    transition: .5s;
+  }
+}
+
+.success {
+  color: $success;
+  border: 1px solid $success;
+  &:hover {
+    background: $success;
+    color: $default-dark;
+    transition: .5s;
+  }
+}
+
+.dark {
+  color: $default-dark;
+  border: 1px solid $default-dark;
+  &:hover {
+    background: $default-dark;
+    color: $primary;
+    transition: .5s;
+  }
+}
+

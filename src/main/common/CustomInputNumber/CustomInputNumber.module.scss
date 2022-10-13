@@ -1,0 +1,64 @@
+@import "src/index.scss";
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+}
+
+input {
+  width: 20%;
+  border: 1px solid $primary;
+  background: $background;
+  padding: 11px 26px;
+  margin: 15px 5px;
+  border-radius: 30px;
+  outline: none !important;
+  transition: .3s;
+  font-family: 'Poppins', sans-serif;
+  color: $default;
+  box-shadow: 0 0 15px 3px $shadow;
+}
+
+.errorInput {
+  border: 1px solid $danger;
+  background: $danger;
+  background: rgba($danger, 0.3);
+  transition: 0.5s;
+}
+
+.error {
+  color: $danger;
+  margin: 0 20px;
+  transition: 0.5s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $default;
+  -webkit-box-shadow: 0 0 0 1000px $background inset;
+  transition: background-color 5000s ease-in-out 0s;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 174, 255, 0.04) 50%, rgba(255, 255, 255, 0) 51%, rgba(0, 174, 255, 0.03) 100%);
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 0.7;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
