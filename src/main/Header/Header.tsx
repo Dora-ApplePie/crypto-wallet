@@ -23,7 +23,7 @@ const Header: React.FC = () => {
             <div className={style.headerContainer}>
                 <div className={style.currencyContainer}>
                     {coins && coins.slice(0, 3).map(coin =>
-                        <Link to={`crypto/${coin.id}`} key={coin.id} className={style.currencyInfo}>
+                        <Link to={`main/assets/${coin.id}`} key={coin.id} className={style.currencyInfo}>
                             {coin.symbol}
                             <span>{convertNumber(coin.priceUsd)}</span>
                         </Link>
