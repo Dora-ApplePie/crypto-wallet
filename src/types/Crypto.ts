@@ -24,3 +24,21 @@ export type InitialCoinsStateType = {
     isLoading: boolean
     error: null | string
 }
+
+export type InitialCurrentCoinStateType = {
+    currentCoin: AssetsResponseType | null
+    isLoading: boolean
+    error: null | string
+}
+
+export type InitialChartStateType = {
+    cryptoHistory: CryptoHistoryType[]
+    isLoading: boolean
+    error: null | string
+}
+
+export type CryptoHistoryType = {
+    priceUsd: string
+    time: number
+    date: string
+}
