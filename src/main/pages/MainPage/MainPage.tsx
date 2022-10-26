@@ -1,20 +1,26 @@
 import React, {useEffect} from "react";
 import CustomButton from "../../common/CustomButton/CustomButton";
 import style from "./MainPage.module.scss"
-import {Link} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import convertNumber from "../../utils/convertNumbers";
 import {fetchAllCoinsTC} from "./mainPageReducer";
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
-import Header from "../../Header/Header";
+import Preloader from "../../common/Preloader/Preloader";
 
 const MainPage: React.FC = () => {
+
     const dispatch = useAppDispatch();
 
     const coins = useAppSelector((state) => state.main.allCoins)
+    const isLoading = useAppSelector((state) => state.main.isLoading)
 
     useEffect(() => {
         dispatch(fetchAllCoinsTC())
     }, [])
+
+    if (isLoading) {
+        return <Preloader/>
+    }
 
     return (
         <div className={style.mainContainer}>
@@ -38,11 +44,9 @@ const MainPage: React.FC = () => {
                         <tr key={crypto.id}>
                             <td>{crypto.rank}</td>
                             <td>
-                                <Link to={`crypto/${crypto.id}`}>
-                                    <span>
-                                        <p>{crypto.name}</p>
-                                    </span>
-                                </ Link>
+                                <Link to={`assets/${crypto.id}`}>
+                                    {crypto.name}
+                                </Link>
                             </td>
                             <td>${convertNumber(crypto.priceUsd)}</td>
                             <td>${convertNumber(crypto.marketCapUsd)}</td>
@@ -78,15 +82,27 @@ export default MainPage
 //     }
 // }
 
-{/*<CustomInputNumber*/}
-{/*    step={"0.1"}*/}
-{/*    min={"0"}*/}
-{/*    value={number}*/}
-{/*    onChangeNumber={setNumber}*/}
-{/*    onEnter={showAlert}*/}
-{/*    error={error}*/}
-{/*/>*/}
-{/*<CustomButton danger>Sell coins</CustomButton>*/}
-{/*<CustomButton success>Buy coins</CustomButton>*/}
-{/*<CustomButton primary>Next Page</CustomButton>*/}
-{/*<CustomButton>Default button</CustomButton>*/}
+{/*<CustomInputNumber*/
+}
+{/*    step={"0.1"}*/
+}
+{/*    min={"0"}*/
+}
+{/*    value={number}*/
+}
+{/*    onChangeNumber={setNumber}*/
+}
+{/*    onEnter={showAlert}*/
+}
+{/*    error={error}*/
+}
+{/*/>*/
+}
+{/*<CustomButton danger>Sell coins</CustomButton>*/
+}
+{/*<CustomButton success>Buy coins</CustomButton>*/
+}
+{/*<CustomButton primary>Next Page</CustomButton>*/
+}
+{/*<CustomButton>Default button</CustomButton>*/
+}

@@ -5,7 +5,7 @@ import {cryptoApi} from "../../../api/cryptoApi";
 
 const initialState: InitialCoinsStateType = {
     allCoins: [],
-    isLoading: false,
+    isLoading: true,
     error: null,
 }
 
@@ -15,26 +15,31 @@ export const mainPageReducer = (state: InitialCoinsStateType = initialState, act
             return {...state, error: action.error}
         case "SET-COINS":
             return {...state, allCoins: action.coins}
+        case "SET-LOADING":
+            return {...state, isLoading: action.isLoading}
         default:
             return {...state}
     }
 }
 
-export const setAppErrorAC = (error: string | null) => ({type: 'SET-ERROR', error} as const)
+export const setErrorAC = (error: string | null) => ({type: 'SET-ERROR', error} as const)
 export const setAllCoinsAC = (coins: Array<AssetsResponseType>) => ({type: 'SET-COINS', coins} as const)
+export const setIsLoadingAC = (isLoading: boolean) => ({type: 'SET-LOADING', isLoading} as const)
 
 export const fetchAllCoinsTC = (): AppThunk => (dispatch: Dispatch) => {
     cryptoApi.getAllCoins()
         .then(res => {
-            if (res.data) {
-                // dispatch(setIsLoadingAC(false));
-                dispatch(setAllCoinsAC(res.data.data));
-            } else {
-
-            }
+            dispatch(setAllCoinsAC(res.data.data));
+        })
+        .catch(res => {
+            dispatch(setErrorAC('Some error occurred'))
+        })
+        .finally(() => {
+            dispatch(setIsLoadingAC(false));
         })
 }
 
-export type SetAppErrorActionType = ReturnType<typeof setAppErrorAC>
+export type SetErrorActionType = ReturnType<typeof setErrorAC>
 export type SetAllCoinsActionType = ReturnType<typeof setAllCoinsAC>
-type ActionsType = SetAppErrorActionType | SetAllCoinsActionType
+export type setIsLoadingActionType = ReturnType<typeof setIsLoadingAC>
+type ActionsType = SetErrorActionType | SetAllCoinsActionType | setIsLoadingActionType
