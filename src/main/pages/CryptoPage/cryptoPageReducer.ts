@@ -1,10 +1,23 @@
-import {AssetsResponseType, InitialCoinsStateType, InitialCurrentCoinStateType} from "../../../types/Crypto";
+import {AssetsResponseType, InitialCurrentCoinStateType} from "../../../types/Crypto";
 import {AppThunk} from "../../../app/store";
 import {Dispatch} from "redux";
 import {cryptoApi} from "../../../api/cryptoApi";
 
 const initialState: InitialCurrentCoinStateType = {
-    currentCoin: null,
+    currentCoin: {
+        id: '',
+        rank: '',
+        symbol: '',
+        name: '',
+        supply: '',
+        maxSupply: '',
+        marketCapUsd: '',
+        volumeUsd24Hr: '',
+        priceUsd: '',
+        changePercent24Hr: '',
+        vwap24Hr: '',
+        explorer: '',
+    },
     isLoading: true,
     error: null,
 }

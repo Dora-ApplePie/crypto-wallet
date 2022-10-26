@@ -2,13 +2,12 @@ import React, {useEffect} from "react";
 import {CartesianGrid, XAxis, YAxis, Tooltip, Legend, Area, AreaChart, ResponsiveContainer} from 'recharts';
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
 import {fetchCryptoHistoryTC} from "./cryptoHistoryReducer";
-import {useParams} from "react-router-dom";
+import {ICryptoChart} from "../../../../types/Crypto";
 
 
-const CryptoChart: React.FC = () => {
+const CryptoChart: React.FC<ICryptoChart> = ({ id } : ICryptoChart) => {
 
     const dispatch = useAppDispatch();
-    const {id} = useParams();
 
     const cryptoHistory = useAppSelector((state) => state.coinHistory.cryptoHistory)
 

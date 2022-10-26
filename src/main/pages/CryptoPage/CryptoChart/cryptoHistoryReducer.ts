@@ -1,12 +1,10 @@
 import {
     CryptoHistoryType,
     InitialChartStateType,
-    InitialCurrentCoinStateType
 } from "../../../../types/Crypto";
 import {AppThunk} from "../../../../app/store";
 import {Dispatch} from "redux";
 import {cryptoApi} from "../../../../api/cryptoApi";
-import {setCoinAC} from "../cryptoPageReducer";
 
 const initialState: InitialChartStateType = {
     cryptoHistory: [],

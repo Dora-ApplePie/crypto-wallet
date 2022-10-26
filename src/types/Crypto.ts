@@ -26,7 +26,7 @@ export type InitialCoinsStateType = {
 }
 
 export type InitialCurrentCoinStateType = {
-    currentCoin: AssetsResponseType | null
+    currentCoin: AssetsResponseType
     isLoading: boolean
     error: null | string
 }
@@ -41,4 +41,17 @@ export type CryptoHistoryType = {
     priceUsd: string
     time: number
     date: string
+}
+
+export interface ICryptoContainer {
+    currentCoin: AssetsResponseType ,
+    id: string | undefined
+}
+
+export interface ICryptoChart {
+    id: string | undefined
+}
+
+export interface ICryptoPageInfo {
+    currentCoin: AssetsResponseType
 }

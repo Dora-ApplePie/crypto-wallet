@@ -1,6 +1,6 @@
 import React from 'react'
 import {Navigate, Route, Routes} from "react-router-dom";
-import CryptoPage from "../pages/CryptoPage/CryptoPage";
+import CryptoPage from "../pages/CryptoPage/CryptoPageContainer";
 import Page404 from "../pages/Page404/Page404";
 import MainPage from "../pages/MainPage/MainPage";
 
