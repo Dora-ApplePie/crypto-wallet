@@ -20,8 +20,10 @@
   .caseButton {
     border-radius: 20px;
     box-shadow: 5px 5px 5px $shadow;
+    border: 1px solid transparent;
+
     &:hover {
-      border: 1px solid $default-dark;
+      border: 1px solid transparent;
     }
 
     .caseFontIcon {

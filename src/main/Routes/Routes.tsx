@@ -6,17 +6,17 @@ import MainPage from "../pages/MainPage/MainPage";
 
 
 export const PATH = {
-    MAIN_PAGE: '/homepage',
-    CRYPTO_PAGE: '/crypto:id'
+    MAIN_PAGE: '/main',
+    CRYPTO_PAGE: 'main/assets/:id'
 }
 
 const Pages: React.FC = () => {
     return (
         <Routes>
-            <Route path={'/'} element={<Navigate to={PATH.MAIN_PAGE}/>}/>
-            <Route path={PATH.MAIN_PAGE} element={<MainPage/>}/>
-            <Route path={PATH.CRYPTO_PAGE} element={<CryptoPage/>}/>
-            <Route path={'/*'} element={<Page404/>}/>
+                <Route path={'/'} element={<Navigate to={PATH.MAIN_PAGE}/>}/>
+                <Route path={PATH.MAIN_PAGE} element={<MainPage/>}/>
+                <Route path={PATH.CRYPTO_PAGE} element={<CryptoPage/>}/>
+                <Route path={'/*'} element={<Page404/>}/>
         </Routes>
     )
 }

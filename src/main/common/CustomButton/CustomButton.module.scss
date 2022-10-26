@@ -10,6 +10,7 @@ button {
   border: 1px solid $default;
   font-size: 17px;
   font-weight: bold;
+  white-space: nowrap;
   &:hover {
     background: $default;
     color: $default-dark;
