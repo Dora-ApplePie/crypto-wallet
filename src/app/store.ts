@@ -1,14 +1,16 @@
 import {AnyAction, applyMiddleware, combineReducers, createStore} from "redux";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {mainPageReducer} from "../main/pages/MainPage/mainPageReducer";
-import {cryptoPageReducer} from "../main/pages/CryptoPage/cryptoPageReducer";
-import {cryptoHistoryReducer} from "../main/pages/CryptoPage/CryptoChart/cryptoHistoryReducer";
+import {mainPageReducer} from "../main/components/MainPage/mainPageReducer";
+import {cryptoPageReducer} from "../main/components/CryptoPage/cryptoPageReducer";
+import {cryptoHistoryReducer} from "../main/components/CryptoPage/CryptoChart/cryptoHistoryReducer";
+import {briefcaseReducer} from "../main/components/Briefcase/AddToBriefcaseModal/addToBriefcaseModalReducer";
 
 
 const rootReducer = combineReducers({
     main: mainPageReducer,
     coinPage: cryptoPageReducer,
     coinHistory: cryptoHistoryReducer,
+    briefcase: briefcaseReducer,
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

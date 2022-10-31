@@ -44,7 +44,7 @@ export type CryptoHistoryType = {
 }
 
 export interface ICryptoContainer {
-    currentCoin: AssetsResponseType ,
+    currentCoin: AssetsResponseType,
     id: string | undefined
 }
 
@@ -54,4 +54,22 @@ export interface ICryptoChart {
 
 export interface ICryptoPageInfo {
     currentCoin: AssetsResponseType
+}
+
+export type BriefcaseStateType = {
+    currentCryptoPrice: CurrentCryptoPrice[]
+    isLoading: boolean
+    initialSum: number
+    currentSum: number
+}
+
+export type CurrentCryptoPrice = {
+    id: string,
+    priceUsd: string,
+}
+
+export type LocalStorageCryptoList = {
+    id: string,
+    amount: string,
+    price: string
 }
