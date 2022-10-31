@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import CustomButton from "../../common/CustomButton/CustomButton";
 import style from "./MainPage.module.scss"
 import {Link, NavLink, useNavigate} from "react-router-dom";
@@ -6,11 +6,12 @@ import convertNumber from "../../utils/convertNumbers";
 import {fetchAllCoinsTC} from "./mainPageReducer";
 import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import Preloader from "../../common/Preloader/Preloader";
+import AddToBriefcaseModal from "../Briefcase/AddToBriefcaseModal/AddToBriefcaseModal";
 
 const MainPage: React.FC = () => {
 
     const dispatch = useAppDispatch();
-
+    const [isOpen, setIsOpen] = useState(false)
     const coins = useAppSelector((state) => state.main.allCoins)
     const isLoading = useAppSelector((state) => state.main.isLoading)
 
@@ -55,8 +56,12 @@ const MainPage: React.FC = () => {
                             <td>${convertNumber(crypto.volumeUsd24Hr)}</td>
                             <td>{convertNumber(crypto.changePercent24Hr)}%</td>
                             <td>
-                                <CustomButton primary onClick={() => alert('you are bought a crypto')}
-                                              className={style.tdButton}>
+                                <CustomButton primary
+                                              className={style.tdButton}
+                                              onClick={(e) => {
+                                                  e.preventDefault()
+                                                  setIsOpen(true)
+                                              }}>
                                     +
                                 </CustomButton>
                             </td>
@@ -65,6 +70,9 @@ const MainPage: React.FC = () => {
                 }
                 </tbody>
             </table>
+            {/*{*/}
+            {/*    isOpen &&  <AddToBriefcaseModal id={id} price={priceUsd} onClose={() => setIsOpen(false)} />*/}
+            {/*}*/}
         </div>
     )
 }
@@ -82,7 +90,7 @@ export default MainPage
 //     }
 // }
 
-{/*<CustomInputNumber*/
+{/*<CustomInput*/
 }
 {/*    step={"0.1"}*/
 }

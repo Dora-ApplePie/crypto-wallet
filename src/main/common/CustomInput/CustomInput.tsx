@@ -1,19 +1,18 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
-import style from './CustomInputNumber.module.scss'
+import style from './CustomInput.module.scss'
 
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 type CustomInputNumberPropsType = DefaultInputPropsType & {
-    onChangeNumber?: (value: number) => void
+    onChangeNumber?: (number: string) => void
     onEnter?: () => void
     error?: string
     spanClassName?: string
 }
 
-const CustomInputNumber: React.FC<CustomInputNumberPropsType> = (
+const CustomInput: React.FC<CustomInputNumberPropsType> = (
     {
-        type, // достаём и игнорируем чтоб нельзя было задать другой тип инпута
         onChange, onChangeNumber,
         onKeyPress, onEnter,
         error,
@@ -25,7 +24,7 @@ const CustomInputNumber: React.FC<CustomInputNumberPropsType> = (
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange
         && onChange(e) // то передать ему е (поскольку onChange не обязателен)
-        onChangeNumber && onChangeNumber(e.currentTarget.valueAsNumber)
+        onChangeNumber && onChangeNumber(e.currentTarget.value)
     }
     const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
         onKeyPress && onKeyPress(e);
@@ -40,7 +39,6 @@ const CustomInputNumber: React.FC<CustomInputNumberPropsType> = (
     return (
         <div className={style.inputWrapper}>
             <input
-                type={'number'}
                 onChange={onChangeCallback}
                 onKeyPress={onKeyPressCallback}
                 className={finalInputClassName}
@@ -51,4 +49,4 @@ const CustomInputNumber: React.FC<CustomInputNumberPropsType> = (
     )
 }
 
-export default CustomInputNumber
+export default CustomInput
