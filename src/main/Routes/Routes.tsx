@@ -1,8 +1,8 @@
 import React from 'react'
 import {Navigate, Route, Routes} from "react-router-dom";
-import CryptoPage from "../pages/CryptoPage/CryptoPageContainer";
-import Page404 from "../pages/Page404/Page404";
-import MainPage from "../pages/MainPage/MainPage";
+import CryptoPage from "../components/CryptoPage/CryptoPageContainer";
+import Page404 from "../components/Page404/Page404";
+import MainPage from "../components/MainPage/MainPage";
 
 
 export const PATH = {
