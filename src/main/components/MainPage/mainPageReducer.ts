@@ -5,7 +5,7 @@ import {cryptoApi} from "../../../api/cryptoApi";
 
 const initialState: InitialCoinsStateType = {
     allCoins: [],
-    isLoading: true,
+    isLoading: false,
     error: null,
 }
 
@@ -27,6 +27,7 @@ export const setAllCoinsAC = (coins: Array<AssetsResponseType>) => ({type: 'SET-
 export const setIsLoadingAC = (isLoading: boolean) => ({type: 'SET-LOADING', isLoading} as const)
 
 export const fetchAllCoinsTC = (): AppThunk => (dispatch: Dispatch) => {
+    dispatch(setIsLoadingAC(true));
     cryptoApi.getAllCoins()
         .then(res => {
             dispatch(setAllCoinsAC(res.data.data));

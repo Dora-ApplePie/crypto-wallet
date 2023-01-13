@@ -5,7 +5,7 @@ import style from './CustomInput.module.scss'
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 type CustomInputNumberPropsType = DefaultInputPropsType & {
-    onChangeNumber?: (number: string) => void
+    onChangeNumber?: (number: number) => void
     onEnter?: () => void
     error?: string
     spanClassName?: string
@@ -24,7 +24,7 @@ const CustomInput: React.FC<CustomInputNumberPropsType> = (
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange // если есть пропс onChange
         && onChange(e) // то передать ему е (поскольку onChange не обязателен)
-        onChangeNumber && onChangeNumber(e.currentTarget.value)
+        onChangeNumber && onChangeNumber(e.currentTarget.valueAsNumber)
     }
     const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
         onKeyPress && onKeyPress(e);

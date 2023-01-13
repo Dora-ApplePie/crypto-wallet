@@ -1,0 +1,49 @@
+@import "src/index.scss";
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 2s, ease-out 1s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 2s, ease-out 1s;
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+.modalContent {
+  width: 30vw;
+  padding: 40px;
+  border-radius: 12px;
+  background-color: $background;
+  transform: scale(0.5);
+  transition: 0.6s all;
+}
+
+.activeContent {
+  width: 30vw;
+  padding: 40px;
+  border-radius: 12px;
+  background-color: $background;
+  transform: scale(1);
+}
