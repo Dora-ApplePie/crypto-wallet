@@ -7,9 +7,9 @@ import AddToBriefcaseModal from "../../Briefcase/AddToBriefcaseModal/AddToBriefc
 import {useAppSelector} from "../../../../app/hooks";
 
 const CryptoTable: React.FC = () => {
-
     const [isOpen, setIsOpen] = useState(false)
     const [id, setId] = useState("")
+    const [cryptoName, setCryptoName] = useState("")
     const [cryptoPrice, setCryptoPrice] = useState("")
     const coins = useAppSelector((state) => state.main.allCoins)
 
@@ -32,39 +32,40 @@ const CryptoTable: React.FC = () => {
                 <tbody>
                 {
                     coins.length != 0 && coins.map((crypto) => (
-                            <tr key={crypto.id}>
-                                <td>{crypto.rank}</td>
-                                <td>
-                                    <Link to={`assets/${crypto.id}`}>
-                                        {crypto.name}
-                                    </Link>
-                                </td>
-                                <td>${convertNumber(crypto.priceUsd)}</td>
-                                <td>${convertNumber(crypto.marketCapUsd)}</td>
-                                <td>${convertNumber(crypto.vwap24Hr)}</td>
-                                <td>${convertNumber(crypto.supply)}</td>
-                                <td>${convertNumber(crypto.volumeUsd24Hr)}</td>
-                                <td>{convertNumber(crypto.changePercent24Hr)}%</td>
-                                <td>
-                                    <CustomButton primary
-                                                  className={style.tdButton}
-                                                  onClick={(e) => {
-                                                      e.preventDefault()
-                                                      setIsOpen(true)
-                                                      setId(crypto.id)
-                                                      setCryptoPrice(crypto.priceUsd)
-                                                  }}>
-                                        +
-                                    </CustomButton>
-                                </td>
-                            </tr>
+                        <tr key={crypto.id}>
+                            <td>{crypto.rank}</td>
+                            <td>
+                                <Link to={`assets/${crypto.id}`}>
+                                    {crypto.name}
+                                </Link>
+                            </td>
+                            <td>${convertNumber(crypto.priceUsd)}</td>
+                            <td>${convertNumber(crypto.marketCapUsd)}</td>
+                            <td>${convertNumber(crypto.vwap24Hr)}</td>
+                            <td>${convertNumber(crypto.supply)}</td>
+                            <td>${convertNumber(crypto.volumeUsd24Hr)}</td>
+                            <td>{convertNumber(crypto.changePercent24Hr)}%</td>
+                            <td>
+                                <CustomButton primary
+                                              className={style.tdButton}
+                                              onClick={(e) => {
+                                                  setId(crypto.id)
+                                                  setCryptoName(crypto.name)
+                                                  setCryptoPrice(crypto.priceUsd)
+                                                  setIsOpen(true)
+                                                  e.preventDefault()
+                                              }}>
+                                    +
+                                </CustomButton>
+                            </td>
+                        </tr>
                     ))
                 }
                 </tbody>
             </table>
             <div>
                 {id && isOpen
-                    ? <AddToBriefcaseModal id={id} price={cryptoPrice} isOpen={isOpen} onClose={() => setIsOpen(false)}/>
+                    ? <AddToBriefcaseModal cryptoName={cryptoName} id={id} price={cryptoPrice} isOpen={isOpen} setIsOpen={setIsOpen}/>
                     : ''
                 }
             </div>

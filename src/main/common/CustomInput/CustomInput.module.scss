@@ -7,11 +7,11 @@
 }
 
 input {
-  width: 20%;
+  width: 100%;
   border: 1px solid $primary;
   background: $background;
   padding: 11px 26px;
-  margin: 15px 5px;
+  margin: 30px 5px 10px 5px;
   border-radius: 30px;
   outline: none !important;
   transition: .3s;
@@ -22,6 +22,7 @@ input {
 
 .errorInput {
   border: 1px solid $danger;
+  box-shadow: 0 0 15px 3px $shadow;
   background: $danger;
   background: rgba($danger, 0.3);
   transition: 0.5s;
@@ -29,6 +30,7 @@ input {
 
 .error {
   color: $danger;
+  font-size: 10px;
   margin: 0 20px;
   transition: 0.5s;
 }

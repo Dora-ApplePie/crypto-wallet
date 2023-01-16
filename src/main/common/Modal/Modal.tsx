@@ -4,15 +4,15 @@ import style from "./Modal.module.scss"
 
 export type ModalPropsType = {
     children?: React.ReactNode
-    closeModal: () => void
+    setIsOpen: (isOpen: boolean) => void
     isOpen: boolean
 }
 
-const Modal: React.FC<ModalPropsType> = ({children, closeModal, isOpen}) => {
+const Modal: React.FC<ModalPropsType> = ({children, setIsOpen, isOpen}) => {
     return (
-        <div className={isOpen ? style.active : style.modal} onClick={e => e.currentTarget === e.target && closeModal()}>
+        <div className={isOpen ? style.active : style.modal} onClick={e => e.currentTarget === e.target && setIsOpen(false)}>
             <div className={isOpen ? style.activeContent : style.modalContent}>
-                <CustomButton danger onClick={e => e.currentTarget === e.target && closeModal()}>X</CustomButton>
+                <CustomButton danger onClick={() => setIsOpen(false)}>x</CustomButton>
                 {children}
             </div>
         </div>

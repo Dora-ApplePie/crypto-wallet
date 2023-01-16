@@ -44,7 +44,7 @@ const CustomInput: React.FC<CustomInputNumberPropsType> = (
                 className={finalInputClassName}
                 {...restProps}
             />
-            {error && <span className={finalSpanClassName}>{error}</span>}
+            {error && <div className={finalSpanClassName}>{error}</div>}
         </div>
     )
 }

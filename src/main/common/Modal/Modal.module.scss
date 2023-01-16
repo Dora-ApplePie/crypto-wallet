@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: 2s, ease-out 1s;
+  transition: 2s;
   opacity: 0;
   pointer-events: none;
 }
@@ -25,15 +25,19 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: 2s, ease-out 1s;
+  transition: 2s;
   opacity: 1;
   pointer-events: all;
 }
 
 
 .modalContent {
-  width: 30vw;
-  padding: 40px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 20vw;
+  padding: 20px 20px 40px 40px;
   border-radius: 12px;
   background-color: $background;
   transform: scale(0.5);
@@ -41,8 +45,12 @@
 }
 
 .activeContent {
-  width: 30vw;
-  padding: 40px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 20vw;
+  padding: 20px 20px 40px 40px;
   border-radius: 12px;
   background-color: $background;
   transform: scale(1);
